@@ -18,9 +18,7 @@ def treinar(y):
     return bNovo
 
 #Teste da rede treinada
-def teste():
-    saida = [1,1,1,-1]
-    y=saida
+def teste(y):
     bNovo = treinar(y)
     for i in range(len(entrada)):
         yLiquido = (x[i][0] * wNovo[0]) + (x[i][1] * wNovo[1]) + bNovo
@@ -33,5 +31,5 @@ def teste():
     print('w:',wNovo[0],',',wNovo[1])
     print('b:',bNovo)
 
-teste()
+teste([1,1,1,-1])
 
