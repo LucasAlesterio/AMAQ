@@ -18,7 +18,7 @@ def treinar(y):
 
 #Teste da rede treinada
 def teste():
-    saida = [1,1,1,-1]
+    saida = [1,1,1,1]
     y=saida
     treinar(y)
     for i in range(len(entrada)):
@@ -28,8 +28,9 @@ def teste():
         else:
             y='-1'
         print('|',Entrada[i][0],'|',Entrada[i][1],'|',y,'|')
-
+    print('Parametros:')
     print('w:',wNovo[0],',',wNovo[1])
+    print('b:',bNovo)
 
 teste()
 
