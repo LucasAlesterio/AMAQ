@@ -10,19 +10,20 @@ def treinar(y):
     wAnterior=[0,0]
     bAnterior = 0
     for i in range(len(entrada)):
-        wNovo[0] = wAnterior[0] + x[i][0] * y[i]
-        wNovo[1] = wAnterior[1] + x[i][1] * y[i]
+        wNovo[0] = wAnterior[0] + (x[i][0] * y[i])
+        wNovo[1] = wAnterior[1] + (x[i][1] * y[i])
         bNovo = bAnterior + y[i]
         wAnterior = wNovo
         bAnterior = bNovo
+    return bNovo
 
 #Teste da rede treinada
 def teste():
-    saida = [1,1,1,1]
+    saida = [1,1,1,-1]
     y=saida
-    treinar(y)
+    bNovo = treinar(y)
     for i in range(len(entrada)):
-        yLiquido = x[i][0] * wNovo[0] + x[i][1] * wNovo[1] + bNovo
+        yLiquido = (x[i][0] * wNovo[0]) + (x[i][1] * wNovo[1]) + bNovo
         if yLiquido>=limiar:
             y=' 1'
         else:
