@@ -87,17 +87,18 @@ def treinamentoAdaline():
 
     return [wNovo[0],wNovo[1],bNovo,erros]
 
-def teste(x1,x2,valores):
+def teste(valores):
     wNovo=[0,0]
     wNovo[0] = valores[0]
     wNovo[1] = valores[1]
     bNovo = valores[2]
-    yLiquido = wNovo[0]*x1 + wNovo[1]*x2 + bNovo
-    if(yLiquido >= teta):
-        y = 1
-    else:
-        y =- 1
-    print('Resposta:',y)
+    for i in range(len(b1)):
+        yLiquido = wNovo[0]*b1[i][0] + wNovo[1]*b1[i][1] + bNovo
+        if(yLiquido >= teta):
+            y = 1
+        else:
+            y =- 1
+        print('x1:  %f,x2:  %f,y:   %d'%(b1[i][0],b1[i][1],y))
 
 def grafico(valores):
     wNovo=[0,0]
@@ -106,21 +107,13 @@ def grafico(valores):
     bNovo = valores[2]
     maiorX1 = b1[0][0]
     menorX1 = b1[0][0]
-    maiorX2 = b1[0][1]
-    menorX2 = b1[0][1]
+
     for i in range(len(b1)):
         if(b1[i][0]>maiorX1):
             maiorX1 = b1[i][0]
 
-        if(b1[i][1]>maiorX2):
-            maiorX2 = b1[i][1]
-
         if(b1[i][0]<menorX1):
             menorX1 = b1[i][0]
-
-        if(b1[i][1]<menorX2):
-            menorX2 = b1[i][1]
-
         if(t[i]==1):
             plt.scatter(b1[i][0],b1[i][1], color='blue', marker='*')
         else:
@@ -141,8 +134,10 @@ def graficoErroQuadraticoAdaline():
         plt.scatter(i,erros[i],color='orange', marker='.')
     plt.show()
 
-#teste(1.0,1.0,treinamentoPerceptron())
+alfa=0.4
+#teste(treinamentoPerceptron())
 #treinamentoAdaline()
-#teste(1.0,1.0,treinamentoAdaline())
-grafico(treinamentoAdaline())
-#graficoErroQuadraticoAdaline()
+#treinamentoPerceptron()
+#teste(treinamentoAdaline())
+#grafico(treinamentoAdaline())
+graficoErroQuadraticoAdaline()
