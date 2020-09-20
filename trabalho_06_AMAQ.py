@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-data = pd.read_csv('sonar.csv',header=None)
 import os
+data = pd.read_csv('sonar.csv',header=None)
+
 def clear():os.system('cls||clear')
 
 def sigmoid(a,b):
@@ -19,7 +20,7 @@ t = np.asmatrix(np.array(data.values[:,60])).T
 
 neuronioEscondido = 25
 neuronioSaida = 1
-ciclosMax = 10000
+ciclosMax = 20000
 a = 0.005
 
 v = 2*np.random.random((len(x[0,:]),neuronioEscondido)) - 1
@@ -40,7 +41,7 @@ for j in range(ciclosMax):
     erroQuadratico = 0.5 * (erroCamadaSaida**2)
     mediaAbsoluta = np.mean(np.abs(erroQuadratico))
     #print("Erro: " + str(mediaAbsoluta))
-    plt.scatter(j,mediaAbsoluta, color='orange', marker='.')
+    plt.scatter(j,mediaAbsoluta, color='green', marker='.')
     derivadaSaida = sigmoidDerivada(camadaSaida)
     deltaSaida = erroCamadaSaida * derivadaSaida
     wTransposta = w.T
